@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
-using System.Net.Http;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -17,7 +18,7 @@ namespace DankMemes.GPSOAuthSharp
             "6rmf5AAAAAwEAAQ==";
         static RSAParameters androidKey = GoogleKeyUtils.KeyFromB64(b64Key);
 
-        static string version = "0.0.3";
+        static string version = "0.0.4";
         static string authUrl = "https://android.clients.google.com/auth";
         static string userAgent = "gpsoauth/" + version;
 
@@ -33,12 +34,16 @@ namespace DankMemes.GPSOAuthSharp
         // _perform_auth_request
         private Dictionary<string, string> PerformAuthRequest(Dictionary<string, string> data)
         {
-            FormUrlEncodedContent content = new FormUrlEncodedContent(data);
-            using (HttpClient client = new HttpClient())
+            NameValueCollection nvc = new NameValueCollection();
+            foreach (var kvp in data)
             {
-                client.DefaultRequestHeaders.UserAgent.ParseAdd(userAgent);
-                HttpResponseMessage response = client.PostAsync(new Uri(authUrl), content).Result;
-                string result = response.Content.ReadAsStringAsync().Result;
+                nvc.Add(kvp.Key.ToString(), kvp.Value.ToString());
+            }
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("user-agent", userAgent);
+                byte[] response = client.UploadValues(authUrl, nvc);
+                string result = Encoding.UTF8.GetString(response);
                 return GoogleKeyUtils.ParseAuthResponse(result);
             }
         }

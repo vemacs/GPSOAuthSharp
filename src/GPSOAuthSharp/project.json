@@ -1,28 +1,8 @@
 {
-  "version": "0.0.3-*",
+  "version": "0.0.4-beta",
   "description": "A .NET client library for Google Play Services OAuth",
   "authors": [ "vemacs" ],
   "tags": [ "google", "googleplay", "playservices", "oauth" ],
   "projectUrl": "https://github.com/vemacs/GPSOAuthSharp",
   "licenseUrl": "https://www.gnu.org/copyleft/lesser.html",
-
-  "frameworks": {
-    "dnx451": {
-      "dependencies": {
-        "Microsoft.Net.Http": "2.2.29"
-      }
-    },
-    "dnxcore50": {
-      "dependencies": {
-        "System.Collections": "4.0.10-beta-22816",
-        "System.Linq": "4.0.0-beta-22816",
-        "System.Threading": "4.0.10-beta-22816",
-        "Microsoft.CSharp": "4.0.0-beta-22816",
-        "System.Net.Http": "4.0.0-beta-22816",
-        "System.Security.Cryptography.RSA": "4.0.0-beta-22816",
-        "System.Runtime.Extensions": "4.0.10-beta-22816",
-        "System.Security.Cryptography.Hashing.Algorithms": "4.0.0-beta-22816"
-      }
-    }
-  }
 }
