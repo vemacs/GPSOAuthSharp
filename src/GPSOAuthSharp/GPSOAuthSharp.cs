@@ -17,7 +17,7 @@ namespace DankMemes.GPSOAuthSharp
             "6rmf5AAAAAwEAAQ==";
         static RSAParameters androidKey = GoogleKeyUtils.KeyFromB64(b64Key);
 
-        static string version = "0.0.2";
+        static string version = "0.0.3";
         static string authUrl = "https://android.clients.google.com/auth";
         static string userAgent = "gpsoauth/" + version;
 
@@ -97,10 +97,10 @@ namespace DankMemes.GPSOAuthSharp
             byte[] decoded = Convert.FromBase64String(b64Key);
             byte[] part1 = decoded.Take(4).ToArray();
             int i = BitConverter.ToInt32(part1.Reverse().ToArray(), 0);
-            byte[] mod = decoded.Skip(4).Take((int)i).ToArray();
-            byte[] part3 = decoded.Skip((int)i + 4).Take(4).ToArray();
+            byte[] mod = decoded.Skip(4).Take(i).ToArray();
+            byte[] part3 = decoded.Skip(i + 4).Take(4).ToArray();
             int j = BitConverter.ToInt32(part3.Reverse().ToArray(), 0); ;
-            byte[] exponent = decoded.Skip((int)i + 8).Take((int)j).ToArray();
+            byte[] exponent = decoded.Skip(i + 8).Take(j).ToArray();
             RSAParameters rsaKeyInfo = new RSAParameters();
             rsaKeyInfo.Modulus = mod;
             rsaKeyInfo.Exponent = exponent;
