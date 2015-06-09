@@ -125,10 +125,7 @@ namespace DankMemes.GPSOAuthSharp
             foreach (string line in text.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
             {
                 string[] parts = line.Split('=');
-                if (!responseData.ContainsKey(parts[0]))
-                {
-                    responseData.Add(parts[0], parts[1]);
-                }
+                responseData.Add(parts[0], parts[1]);
             }
             return responseData;
         }
