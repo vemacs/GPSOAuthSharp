@@ -1,8 +1,12 @@
 {
-  "version": "0.0.4-beta",
+  "version": "0.0.4-*",
   "description": "A .NET client library for Google Play Services OAuth",
   "authors": [ "vemacs" ],
   "tags": [ "google", "googleplay", "playservices", "oauth" ],
   "projectUrl": "https://github.com/vemacs/GPSOAuthSharp",
   "licenseUrl": "https://www.gnu.org/copyleft/lesser.html",
+  "frameworks": {
+    "dnx451": {
+    }
+  }
 }
