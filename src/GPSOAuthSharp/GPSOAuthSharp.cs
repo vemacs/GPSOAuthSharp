@@ -44,7 +44,7 @@ namespace DankMemes.GPSOAuthSharp
         }
 
         // perform_master_login
-        public Dictionary<string, string> PerformMasterLogin(string service = "ac2dm", 
+        public Dictionary<string, string> PerformMasterLogin(string service = "ac2dm",
             string deviceCountry = "us", string operatorCountry = "us", string lang = "en", int sdkVersion = 21)
         {
             string signature = GoogleKeyUtils.CreateSignature(email, password, androidKey);
@@ -58,8 +58,8 @@ namespace DankMemes.GPSOAuthSharp
                 { "source", "android" },
                 { "device_country", deviceCountry },
                 { "operatorCountry", operatorCountry },
-                {"lang", lang },
-                {"sdk_version", sdkVersion.ToString() }
+                { "lang", lang },
+                { "sdk_version", sdkVersion.ToString() }
             };
             return PerformAuthRequest(dict);
         }
@@ -79,8 +79,8 @@ namespace DankMemes.GPSOAuthSharp
                 { "client_sig", clientSig },
                 { "device_country", deviceCountry },
                 { "operatorCountry", operatorCountry },
-                {"lang", lang },
-                {"sdk_version", sdkVersion.ToString() }
+                { "lang", lang },
+                { "sdk_version", sdkVersion.ToString() }
             };
             return PerformAuthRequest(dict);
         }
