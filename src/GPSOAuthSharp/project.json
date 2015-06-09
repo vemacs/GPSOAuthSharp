@@ -6,12 +6,6 @@
   "projectUrl": "https://github.com/vemacs/GPSOAuthSharp",
   "licenseUrl": "https://www.gnu.org/copyleft/lesser.html",
 
-  "dependencies": {
-    "System.Security.Cryptography.RSA": "4.0.0-beta-22816",
-    "System.Runtime.Extensions": "4.0.10-beta-22816",
-    "System.Security.Cryptography.Hashing.Algorithms": "4.0.0-beta-22816",
-  },
-
   "frameworks": {
     "dnx451": {
       "dependencies": {
@@ -24,7 +18,10 @@
         "System.Linq": "4.0.0-beta-22816",
         "System.Threading": "4.0.10-beta-22816",
         "Microsoft.CSharp": "4.0.0-beta-22816",
-        "System.Net.Http": "4.0.0-beta-22816"
+        "System.Net.Http": "4.0.0-beta-22816",
+        "System.Security.Cryptography.RSA": "4.0.0-beta-22816",
+        "System.Runtime.Extensions": "4.0.10-beta-22816",
+        "System.Security.Cryptography.Hashing.Algorithms": "4.0.0-beta-22816"
       }
     }
   }
