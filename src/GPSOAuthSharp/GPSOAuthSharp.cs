@@ -45,7 +45,7 @@ namespace DankMemes.GPSOAuthSharp
 
         // perform_master_login
         public Dictionary<string, string> PerformMasterLogin(string service = "ac2dm", 
-            string deviceCountry = "us", string operatorCountry = "us", string lang = "en", int sdkVersion = 17)
+            string deviceCountry = "us", string operatorCountry = "us", string lang = "en", int sdkVersion = 21)
         {
             string signature = GoogleKeyUtils.CreateSignature(email, password, androidKey);
             var dict = new Dictionary<string, string> {
@@ -66,7 +66,7 @@ namespace DankMemes.GPSOAuthSharp
 
         // perform_oauth
         public Dictionary<string, string> PerformOAuth(string masterToken, string service, string app, string clientSig,
-            string deviceCountry = "us", string operatorCountry = "us", string lang = "en", int sdkVersion = 17)
+            string deviceCountry = "us", string operatorCountry = "us", string lang = "en", int sdkVersion = 21)
         {
             var dict = new Dictionary<string, string> {
                 { "accountType", "HOSTED_OR_GOOGLE" },
