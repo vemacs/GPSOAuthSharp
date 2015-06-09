@@ -15,5 +15,9 @@ Sample response values (sample program coming soon):
 
 ![](http://i.imgur.com/GLRCWs9.png)
 
+Python result (for comparison): 
+
+![](http://i.imgur.com/JyLnAK5.png)
+
 ## Goals
 This project intends to follow the Google-specific parts of the Python implementation extremely carefully, so that any changes made to the Python implementation can be easily applied to this.
