@@ -68,7 +68,6 @@ namespace DankMemes.GPSOAuthSharp
         public Dictionary<string, string> PerformOAuth(string masterToken, string service, string app, string clientSig,
             string deviceCountry = "us", string operatorCountry = "us", string lang = "en", int sdkVersion = 17)
         {
-            string signature = GoogleKeyUtils.CreateSignature(email, password, androidKey);
             var dict = new Dictionary<string, string> {
                 { "accountType", "HOSTED_OR_GOOGLE" },
                 { "Email", email },
