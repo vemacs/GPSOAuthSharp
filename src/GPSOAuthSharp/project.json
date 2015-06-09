@@ -1,5 +1,5 @@
 {
-  "version": "0.0.2-*",
+  "version": "0.0.3-*",
   "description": "A .NET client library for Google Play Services OAuth",
   "authors": [ "vemacs" ],
   "tags": [ "google", "googleplay", "playservices", "oauth" ],

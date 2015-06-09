@@ -9,7 +9,7 @@ namespace DankMemes.GPSOAuthSharp
 {
     // gpsoauth:__init__.py
     // URL: https://github.com/simon-weber/gpsoauth/blob/master/gpsoauth/__init__.py
-    class GPSOAuthClient
+    public class GPSOAuthClient
     {
         static string b64Key = "AAAAgMom/1a/v0lblO2Ubrt60J2gcuXSljGFQXgcyZWveWLEwo6prwgi3" +
             "iJIZdodyhKZQrNWp5nKJ3srRXcUW+F1BD3baEVGcmEgqaLZUNBjm057pK" +
