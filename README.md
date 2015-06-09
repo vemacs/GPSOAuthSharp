@@ -15,6 +15,10 @@ Demo response values:
 
 ![](http://i.imgur.com/v5PqdKe.png)
 
+Wrong credentials:
+
+![](http://i.imgur.com/ubakOF3.png)
+
 You can download an executable for the Demo on the [Releases page](https://github.com/vemacs/GPSOAuthSharp/releases/). 
 
 The source for the Demo is located in the `GPSOAuthDemo` directory. The [main class](https://github.com/vemacs/GPSOAuthSharp/blob/master/GPSOAuthDemo/GPSOAuthDemo/Program.cs) is here.
