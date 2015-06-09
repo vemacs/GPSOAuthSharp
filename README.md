@@ -11,9 +11,13 @@ Construct a `DankMemes.GPSOAuthSharp.GPSOAuthClient(email, password)`.
 
 Use `PerformMasterLogin()` or `PerformOAuth()` to retrieve a `Dictionary<string, string>` of response values. 
 
-Sample response values (sample program coming soon): 
+Demo response values: 
 
 ![](http://i.imgur.com/v5PqdKe.png)
+
+You can download an executable for the Demo on the [Releases page](https://github.com/vemacs/GPSOAuthSharp/releases/). 
+
+The source for the Demo is located in the `GPSOAuthDemo` directory. The [main class](https://github.com/vemacs/GPSOAuthSharp/blob/master/GPSOAuthDemo/GPSOAuthDemo/Program.cs) is here.
 
 Python result (for comparison): 
 
