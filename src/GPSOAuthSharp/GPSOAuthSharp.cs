@@ -64,6 +64,7 @@ namespace DankMemes.GPSOAuthSharp
             return PerformAuthRequest(dict);
         }
 
+        // perform_oauth
         public Dictionary<string, string> PerformOAuth(string masterToken, string service, string app, string clientSig,
             string deviceCountry = "us", string operatorCountry = "us", string lang = "en", int sdkVersion = 17)
         {
