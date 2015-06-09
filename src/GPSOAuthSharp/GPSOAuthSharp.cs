@@ -127,14 +127,7 @@ namespace DankMemes.GPSOAuthSharp
                 string[] parts = line.Split('=');
                 if (!responseData.ContainsKey(parts[0]))
                 {
-                    if (string.IsNullOrEmpty(parts[1]))
-                    {
-                        responseData.Add(parts[0], null);
-                    }
-                    else
-                    {
-                        responseData.Add(parts[0], parts[1]);
-                    }
+                    responseData.Add(parts[0], parts[1]);
                 }
             }
             return responseData;
@@ -146,14 +139,10 @@ namespace DankMemes.GPSOAuthSharp
             RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
             rsa.ImportParameters(key);
             SHA1 sha1 = SHA1.Create();
-
-            List<byte> signature = new List<byte>();
-            signature.Add(0x00);
+            byte[] prefix = { 0x00 };
             byte[] hash = sha1.ComputeHash(GoogleKeyUtils.KeyToStruct(key)).Take(4).ToArray();
-            signature.AddRange(hash);
             byte[] encrypted = rsa.Encrypt(Encoding.UTF8.GetBytes(email + "\x00" + password), true);
-            signature.AddRange(encrypted);
-            return DataTypeUtils.UrlSafeBase64(signature.ToArray());
+            return DataTypeUtils.UrlSafeBase64(DataTypeUtils.CombineBytes(prefix, hash, encrypted));
         }
     }
 
