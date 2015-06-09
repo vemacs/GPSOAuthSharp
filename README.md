@@ -13,7 +13,7 @@ Use `PerformMasterLogin()` or `PerformOAuth()` to retrieve a `Dictionary<string,
 
 Sample response values (sample program coming soon): 
 
-![](http://i.imgur.com/GLRCWs9.png)
+![](http://i.imgur.com/v5PqdKe.png)
 
 Python result (for comparison): 
 
