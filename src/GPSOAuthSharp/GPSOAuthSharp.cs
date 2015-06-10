@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
@@ -41,9 +42,17 @@ namespace DankMemes.GPSOAuthSharp
             }
             using (WebClient client = new WebClient())
             {
-                client.Headers.Add("user-agent", userAgent);
-                byte[] response = client.UploadValues(authUrl, nvc);
-                string result = Encoding.UTF8.GetString(response);
+                client.Headers.Add(HttpRequestHeader.UserAgent, userAgent);
+                string result;
+                try
+                {
+                    byte[] response = client.UploadValues(authUrl, nvc);
+                    result = Encoding.UTF8.GetString(response);
+                }
+                catch (WebException e)
+                {
+                    result = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                }
                 return GoogleKeyUtils.ParseAuthResponse(result);
             }
         }
