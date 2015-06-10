@@ -39,6 +39,19 @@ namespace GPSOAuthDemo
             Dictionary<string, string> response = client.PerformMasterLogin();
             string json = JsonConvert.SerializeObject(response, Formatting.Indented);
             Console.WriteLine(json);
+            if (response.ContainsKey("Token"))
+            {
+                string token = response["Token"];
+                Dictionary<string, string> oauthResponse = client
+                    .PerformOAuth(token, "sj", "com.google.android.music",
+                    "38918a453d07199354f8b19af05ec6562ced5788");
+                    string oauthJson = JsonConvert.SerializeObject(oauthResponse, Formatting.Indented);
+                    Console.WriteLine(oauthJson);
+            }
+            else
+            {
+                Console.WriteLine("MasterLogin failed (check credentials)");
+            }
             Console.ReadLine();
         }
     }
