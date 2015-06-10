@@ -19,9 +19,9 @@ namespace DankMemes.GPSOAuthSharp
             "6rmf5AAAAAwEAAQ==";
         static RSAParameters androidKey = GoogleKeyUtils.KeyFromB64(b64Key);
 
-        static string version = "0.0.4";
+        static string version = "0.0.5";
         static string authUrl = "https://android.clients.google.com/auth";
-        static string userAgent = "gpsoauth/" + version;
+        static string userAgent = "GPSOAuthSharp/" + version;
 
         private string email;
         private string password;
