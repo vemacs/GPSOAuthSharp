@@ -31,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GPSOAuthSharp, Version=0.0.5.0, Culture=neutral, processorArchitecture=MSIL">
@@ -66,8 +67,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Target Name="SpicNSpan"
-        AfterTargets="Clean">
-    <RemoveDir Directories="$(OUTDIR)"/>
+  <Target Name="SpicNSpan" AfterTargets="Clean">
+    <RemoveDir Directories="$(OUTDIR)" />
   </Target>
 </Project>
