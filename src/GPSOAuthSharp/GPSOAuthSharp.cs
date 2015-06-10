@@ -100,12 +100,10 @@ namespace DankMemes.GPSOAuthSharp
         public static RSAParameters KeyFromB64(string b64Key)
         {
             byte[] decoded = Convert.FromBase64String(b64Key);
-            byte[] part1 = decoded.Take(4).ToArray();
-            int i = BitConverter.ToInt32(part1.Reverse().ToArray(), 0);
-            byte[] mod = decoded.Skip(4).Take(i).ToArray();
-            byte[] part3 = decoded.Skip(i + 4).Take(4).ToArray();
-            int j = BitConverter.ToInt32(part3.Reverse().ToArray(), 0); ;
-            byte[] exponent = decoded.Skip(i + 8).Take(j).ToArray();
+            int modLength = BitConverter.ToInt32(decoded.Take(4).Reverse().ToArray(), 0);
+            byte[] mod = decoded.Skip(4).Take(modLength).ToArray();
+            int expLength = BitConverter.ToInt32(decoded.Skip(modLength + 4).Take(4).Reverse().ToArray(), 0);
+            byte[] exponent = decoded.Skip(modLength + 8).Take(expLength).ToArray();
             RSAParameters rsaKeyInfo = new RSAParameters();
             rsaKeyInfo.Modulus = mod;
             rsaKeyInfo.Exponent = exponent;
@@ -116,11 +114,11 @@ namespace DankMemes.GPSOAuthSharp
         // Python version returns a string, but we use byte[] to get the same results
         public static byte[] KeyToStruct(RSAParameters key)
         {
-            byte[] begin = { 0x00, 0x00, 0x00, 0x80 };
+            byte[] modLength = { 0x00, 0x00, 0x00, 0x80 };
             byte[] mod = key.Modulus;
-            byte[] middle = { 0x00, 0x00, 0x00, 0x03 };
-            byte[] exp = key.Exponent;
-            return DataTypeUtils.CombineBytes(begin, mod, middle, exp);
+            byte[] expLength = { 0x00, 0x00, 0x00, 0x03 };
+            byte[] exponent = key.Exponent;
+            return DataTypeUtils.CombineBytes(modLength, mod, expLength, exponent);
         }
 
         // parse_auth_response
