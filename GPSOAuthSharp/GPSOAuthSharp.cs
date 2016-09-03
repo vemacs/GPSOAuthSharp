@@ -136,7 +136,7 @@ namespace DankMemes.GPSOAuthSharp
             Dictionary<string, string> responseData = new Dictionary<string, string>();
             foreach (string line in text.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
             {
-                string[] parts = line.Split('=');
+                string[] parts = line.Split(new char[] { '=' }, 2);
                 responseData.Add(parts[0], parts[1]);
             }
             return responseData;
