@@ -2,12 +2,18 @@
 using DankMemes.GPSOAuthSharp;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GPSOAuthDemo
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            MainAsync().Wait();
+        }
+
+        static async Task MainAsync()
         {
             Console.WriteLine("Google account email: ");
             string email = Console.ReadLine();
@@ -36,17 +42,17 @@ namespace GPSOAuthDemo
             }
             Console.WriteLine();
             GPSOAuthClient client = new GPSOAuthClient(email, password);
-            Dictionary<string, string> response = client.PerformMasterLogin();
+            IDictionary<string, string> response = await client.PerformMasterLoginAsync();
             string json = JsonConvert.SerializeObject(response, Formatting.Indented);
             Console.WriteLine(json);
             if (response.ContainsKey("Token"))
             {
                 string token = response["Token"];
-                Dictionary<string, string> oauthResponse = client
-                    .PerformOAuth(token, "sj", "com.google.android.music",
+                IDictionary<string, string> oauthResponse = await client
+                    .PerformOAuthAsync(token, "sj", "com.google.android.music",
                     "38918a453d07199354f8b19af05ec6562ced5788");
-                    string oauthJson = JsonConvert.SerializeObject(oauthResponse, Formatting.Indented);
-                    Console.WriteLine(oauthJson);
+                string oauthJson = JsonConvert.SerializeObject(oauthResponse, Formatting.Indented);
+                Console.WriteLine(oauthJson);
             }
             else
             {
